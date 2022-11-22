@@ -1,0 +1,124 @@
+{
+  "anuncios": [
+    {
+      "id": 1,
+      "titulo": "Capitan",
+      "descripcion": "Es guardian",
+      "precio": "10000",
+      "animal": "perro",
+      "raza": "Policia",
+      "fecha_nacimiento": "2022-10-06",
+      "vacuna": "no"
+    },
+    {
+      "id": 2,
+      "titulo": "Lassie",
+      "descripcion": "Re bueno",
+      "precio": "5000",
+      "animal": "perro",
+      "raza": "Collie",
+      "fecha_nacimiento": "2022-10-01",
+      "vacuna": "si"
+    },
+    {
+      "id": 3,
+      "titulo": "Colita",
+      "descripcion": "Es de la calle",
+      "precio": "350",
+      "animal": "perro",
+      "raza": "Raza calle",
+      "fecha_nacimiento": "2022-09-29",
+      "vacuna": "si"
+    },
+    {
+      "id": 4,
+      "titulo": "Malvado",
+      "descripcion": "No te le acerques",
+      "precio": "15000",
+      "animal": "perro",
+      "raza": "Doberman",
+      "fecha_nacimiento": "2022-10-05",
+      "vacuna": "si"
+    },
+    {
+      "id": 5,
+      "titulo": "Chatran",
+      "descripcion": "Un gato naranja",
+      "precio": "500",
+      "animal": "gato",
+      "raza": "Egipcio",
+      "fecha_nacimiento": "2022-10-22",
+      "vacuna": "si"
+    },
+    {
+      "id": 6,
+      "titulo": "Bigotes",
+      "descripcion": "Le gusta dormir",
+      "precio": "500",
+      "animal": "gato",
+      "raza": "Angola",
+      "fecha_nacimiento": "2022-10-20",
+      "vacuna": "si"
+    },
+    {
+      "id": 7,
+      "titulo": "Callejero",
+      "descripcion": "Apareció un dia",
+      "precio": "500",
+      "animal": "gato",
+      "raza": "De la calle",
+      "fecha_nacimiento": "2022-09-28",
+      "vacuna": "si"
+    },
+    {
+      "id": 8,
+      "titulo": "Matungo",
+      "descripcion": "Correte que muerde",
+      "precio": "150",
+      "animal": "perro",
+      "raza": "Salvaje",
+      "fecha_nacimiento": "2022-11-01",
+      "vacuna": "si"
+    },
+    {
+      "id": 9,
+      "titulo": "Baco",
+      "descripcion": "Un manto negro",
+      "precio": "650",
+      "animal": "perro",
+      "raza": "Manto Negro",
+      "fecha_nacimiento": "2022-11-17",
+      "vacuna": "si"
+    },
+    {
+      "id": 10,
+      "titulo": "Sardina",
+      "descripcion": "le gusta las sardinas",
+      "precio": "1000",
+      "animal": "gato",
+      "raza": "Gato de la calle",
+      "fecha_nacimiento": "2022-11-02",
+      "vacuna": "si"
+    },
+    {
+      "titulo": "Flaquito",
+      "descripcion": "No comió bien",
+      "precio": "200",
+      "animal": "perro",
+      "raza": "De la calle",
+      "fecha_nacimiento": "2022-11-02",
+      "vacuna": "no",
+      "id": 11
+    },
+    {
+      "titulo": "Panza",
+      "descripcion": "Otro callejero",
+      "precio": "365",
+      "animal": "perro",
+      "raza": "Calle",
+      "fecha_nacimiento": "2022-11-02",
+      "vacuna": "no",
+      "id": 12
+    }
+  ]
+}

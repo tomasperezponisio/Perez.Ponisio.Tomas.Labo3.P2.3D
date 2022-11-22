@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <link rel="stylesheet" href="./css/tablaDinamica.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <title>Mitre Petshop</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <nav class="navbar navbar-expand-md bg-warning">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mitre Petshop</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="./index.html"
+                    >Inicio</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="./administracion.html"
+                    >Administracion</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contacto</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="container">
+        <div class="p-3 mt-2 mb-2 bg-light rounded-3 jumbo text-white">
+          <div class="container-fluid py-2">
+            <h1 class="display-5 fw-bold">Administración</h1>
+            <p class="col-md-8 fs-5 fw-light">
+              Utulice el formulario para dar de alta los anuncios de las
+              mascotas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container pt-2 rounded containerForm" id="divFormulario">
+        <form class="row g-3">
+          <h4>Información del anuncio</h4>
+          <div class="row mb-1 mt-1">
+            <div class="col-12">
+              <label for="txtTitulo" class="form-label">Titulo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtTitulo"
+                name="titulo"
+                placeholder="Titulo"
+              />
+              <small></small>
+            </div>
+          </div>
+          <div class="row mb-1 mt-1">
+            <div class="col-12">
+              <label for="txtDescripcion" class="form-label">Descripción</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtDescripcion"
+                name="descripcion"
+                placeholder="Descripcion"
+              />
+              <small></small>
+            </div>
+          </div>
+
+          <div class="row mb-1 mt-1">
+            <div class="col-4">
+              <label for="radioAnimal" class="form-label">Animal</label>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="radioAnimal"
+                  value="perro"
+                  checked
+                  name="animal"
+                />
+                <label class="form-check-label" for="radioAnimal">
+                  Perro
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  id="radioAnimal"
+                  value="gato"
+                  name="animal"
+                />
+                <label class="form-check-label" for="radioAnimal"> Gato </label>
+              </div>
+              <small></small>
+            </div>
+          </div>
+
+          <div class="row mb-1 mt-1">
+            <div class="col-12">
+              <label for="txtPrecio" class="form-label">Precio</label>
+              <input
+                type="text"
+                class="form-control"
+                id="txtPrecio"
+                placeholder="Precio"
+                name="precio"
+              />
+              <small></small>
+            </div>
+          </div>
+
+          <div class="row mb-1 mt-1">
+            <div class="col-6">
+              <label for="txtRaza" class="form-label">Raza&nbsp&nbsp</label
+              ><i class="fa-solid fa-dog"></i>
+              <input
+                type="text"
+                class="form-control"
+                id="txtRaza"
+                placeholder="Raza"
+                name="raza"
+              />
+              <small></small>
+            </div>
+            <div class="col-md-3">
+              <label for="fechaNac" class="form-label"
+                >Fecha de Nacimiento&nbsp&nbsp</label
+              ><i class="fa-solid fa-calendar-days"></i>
+              <input
+                type="date"
+                class="form-control"
+                id="fechaNac"
+                name="fecha_nacimiento"
+              />
+              <small></small>
+            </div>
+            <div class="col-md-3">
+              <label for="selVacunas" class="form-label">Vacuna&nbsp&nbsp</label
+              ><i class="fa-solid fa-syringe"></i>
+              <select id="selVacunas" class="form-select" name="vacuna">
+                <option value="si" selected>Si</option>
+                <option value="no">No</option>
+              </select>
+              <small></small>
+            </div>
+          </div>
+
+          <small id="alertSubmit"></small>
+
+          <div class="d-grid gap-2 d-md-block mb-2">
+            <input
+              class="btn btn-success btn-sm"
+              type="submit"
+              value="Cargar"
+              name="btnCargar"
+              id="btnCargar"
+            />
+            <input
+              class="btn btn-warning btn-sm"
+              type="reset"
+              value="Borrar Formulario"
+              name="btnResetForm"
+              id="btnResetForm"
+            />
+            <button
+              class="btn btn-danger btn-sm"
+              id="btnEliminar"
+              class="escondido"
+            >
+              Eliminar Anuncio
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="container rounded bg-admin pb-2 mt-2 mb-2">
+        <div class="row">
+          <h4>Filtros:</h4>
+          <div class="col-md-6">
+            <label for="selFiltro" class="form-label">Filtro por tipo de animal</label>
+            <select id="selFiltro" class="form-select" name="filtro">
+              <option value="todos" selected>Todos</option>
+              <option value="perro">Perro</option>
+              <option value="gato">Gato</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="txtPromedio" class="form-label">Promedio:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="txtPromedio"
+              name="promedio"
+              placeholder="Promedio"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="container rounded bg-admin mt-2 mb-2">
+        <div class="row">
+          <h4>Checkbox:</h4>
+          <div class="row">
+            <div class="col">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="checkTitulo">Título</label>
+                <input class="form-check-input checkboxes" type="checkbox" value="titulo" name="checkTitulo" checked/>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="checkDescripcion">Descripción</label>
+                <input class="form-check-input checkboxes" type="checkbox" value="descripcion" name="checkDescripcion" checked/>
+              </div>              
+            </div>
+            <div class="col">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="checkDescripcion">Precio</label>
+                <input class="form-check-input checkboxes" type="checkbox" value="precio" name="checkPrecio" checked/>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="checkDescripcion">Animal</label>
+                <input class="form-check-input checkboxes" type="checkbox" value="animal" name="checkAnimal" checked/>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="checkDescripcion">Raza</label>
+                <input class="form-check-input checkboxes" type="checkbox" value="raza" name="checkRaza" checked/>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="checkDescripcion">Fecha Nacimiento</label>
+                <input class="form-check-input checkboxes" type="checkbox" value="fecha_nacimiento" name="checkFechaNacimiento" checked/>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="checkDescripcion">Vacuna</label>
+                <input class="form-check-input checkboxes" type="checkbox" value="vacuna" name="checkVacuna" checked/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container rounded bg-admin mt-2 mb-2">
+        <div class="row">
+          <h4>Mascotas cargadas en sistema:</h4>
+          <div id="spinner"></div>
+          <div class="container" id="divTabla"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./js/app.js" type="module"></script>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+    crossorigin="anonymous"
+  ></script>
+
+  <footer>
+    <div class="container">
+      <nav class="navbar sticky-bottom navbar-expand-md bg-warning">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Mitre Petshop</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="./index.html"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="./administracion.html"
+                  >Administracion</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </footer>
+</html>
