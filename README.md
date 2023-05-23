@@ -9,4 +9,13 @@
 - En el formulario se validan los datos, y clickeando un anuncio de la lista se puede editar o eliminar (manejados de eventos).
 - Los datos se traen con peticiones AJAX.
 
+## Anuncios
+
 ![Anuncios](https://i.imgur.com/nQBLWGM.png)
+
+### Petición AJAX (promesa) para traer los datos de los anuncios
+
+![Ajax](https://i.imgur.com/slRaTgh.png)
+![Ajax](https://i.imgur.com/qSDJmcY.png)
+
+### Armado de anuncios con los elementos del DOM
