@@ -11,11 +11,11 @@
 
 ## Anuncios
 
-![Anuncios](https://i.imgur.com/nQBLWGM.png)
+![Anuncios](https://i.imgur.com/nQBLWGM.png | width=75)
 
 ### Petición AJAX (promesa) para traer los datos de los anuncios
 
-![Ajax](https://i.imgur.com/slRaTgh.png)
-![Ajax](https://i.imgur.com/qSDJmcY.png)
+![Ajax](https://i.imgur.com/slRaTgh.png | width=50)
+![Ajax](https://i.imgur.com/qSDJmcY.png | width=75)
 
 ### Armado de anuncios con los elementos del DOM
