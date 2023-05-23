@@ -9,4 +9,4 @@
 - En el formulario se validan los datos, y clickeando un anuncio de la lista se puede editar o eliminar (manejados de eventos).
 - Los datos se traen con peticiones AJAX.
 
-
+![Anuncios](https://i.imgur.com/nQBLWGM.png)
