@@ -324,3 +324,91 @@ function crearCuerpo(data) {
     return cuerpo;
 }
 ```
+
+### Filtros
+
+![Filtros](https://i.imgur.com/ohjDflf.png)
+
+```Javascript
+// Obtengo una referencia de los checkboxes
+const $checkboxes = document.querySelectorAll(".checkboxes");
+
+// Obtengo un arrary con los keys a utilizar
+const keys = ["id"];
+$checkboxes.forEach((elemento) => {
+  if (elemento.hasAttribute("checked")) {
+    keys.push(elemento.value);
+  }
+});
+
+// Guardo el orden de las keys asi no se me desordena al filtrar con los  checkboxes
+const keysOrder = ["id", "titulo", "descripcion", "precio", "animal", "raza", "fecha_nacimiento", "vacuna"]
+
+$checkboxes.forEach((element) =>
+  // En el evento click, si marcan un check lo pusheo al array de keys, si lo desmarcan lo saco
+  element.addEventListener("click", (e) => {
+    console.log(keysOrder);
+    if (e.target.checked) {
+      keys.push(e.target.value);
+    } else {
+      keys.splice(keys.indexOf(e.target.value), 1);
+    }
+    
+    // Para que quede segun el orden original
+    keys.sort(function (a, b) {
+      return keysOrder.indexOf(a) - keysOrder.indexOf(b);
+    });
+    
+    // Guardo el map de anuncios con los elementos según los keys que tengo guardados
+    const anunciosFiltrado = anuncios.map((item) => {
+      const nuevoAnuncio = [];
+      keys.forEach((key) => {
+        nuevoAnuncio[key] = item[key];        
+      });
+      return nuevoAnuncio;
+    });
+    actualizarTablaFiltrada(anunciosFiltrado);
+  })
+);
+```
+
+```Javascript
+// ----------- Filtros / Promedios  ----------- //
+// Obtengo referencia del input donde va el promedio
+const $promedio = document.getElementById("txtPromedio");
+$promedio.value = "N/A";
+
+let parametro;
+$selFiltro.addEventListener('change', (e) => {
+  parametro = e.target.value;
+  $promedio.value = "$" + promedio(anuncios, parametro);
+  if (parametro == "todos"){
+    actualizarTabla();    
+  } else {
+    let listaFiltrada = anuncios.filter((anuncio) => {
+      return anuncio.animal.toLowerCase().includes(parametro.toLowerCase())
+    })
+    actualizarTablaFiltrada(listaFiltrada);
+  }
+});
+```
+
+```Javascript
+export const promedio = (anuncios, parametro) => {
+    let total;
+    let totalAnimal;
+    if (parametro == "todos") {
+        total = anuncios.reduce((total, a) => {
+            return total += parseFloat(a.precio);
+        }, 0);        
+        return (total / anuncios.length).toFixed(2);
+    } else {
+        totalAnimal = anuncios.filter(p => p.animal == parametro);        
+        total = totalAnimal.reduce((total, a) => {
+            return total += parseFloat(a.precio);
+        }, 0);
+        return (total / totalAnimal.length).toFixed(2);
+    }
+}
+```
+
