@@ -330,6 +330,7 @@ function crearCuerpo(data) {
 ![Filtros](https://i.imgur.com/ohjDflf.png)
 
 ```Javascript
+// -------- Checkboxes ------- //
 // Obtengo una referencia de los checkboxes
 const $checkboxes = document.querySelectorAll(".checkboxes");
 
