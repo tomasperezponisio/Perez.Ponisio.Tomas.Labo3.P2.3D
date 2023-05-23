@@ -132,6 +132,7 @@ $divCards.classList.add("row", "row-cols-1", "row-cols-md-3", "text-center");
 $main.appendChild($divContainer);
 $divContainer.appendChild($divCards);
 ```
+## Formulario
 
 ![Formulario](https://i.imgur.com/OggVBaJ.png)
 
@@ -213,6 +214,8 @@ $divTabla.addEventListener("click", (e) => {
   }
 });
 ```
+
+## Tabla de anuncios
 
 ![Tabla de anuncios](https://i.imgur.com/3C70779.png)
 
