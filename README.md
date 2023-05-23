@@ -133,4 +133,191 @@ $main.appendChild($divContainer);
 $divContainer.appendChild($divCards);
 ```
 
+![Anuncios](https://i.imgur.com/OggVBaJ.png)
 
+```Javascript
+// Dos escuchadores, al cargarse la pagina y al submit del form
+window.addEventListener("load", () => {
+  esconderBotonEliminar();
+
+  $formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    // me fijo si hay algun campo del form que no se haya completado
+    // y valido los campos del form antes de submit
+    if (!validarFormVacio() && validarSubmit()) {
+      // borro el mensaje de error de submit
+      $alertSubmit.textContent = "";
+      $alertSubmit.classList.remove("danger", "text-danger", "fw-bold");
+
+      // si el formulario esta para cargar un nuevo anuncio tomo los valores del form, el target,
+      // y con esos datos creo el nuevo anuncio (objeto de la clase anuncio)
+      if ($formulario.btnCargar.value == "Cargar") {
+        console.log("Cargar");
+        const { titulo, descripcion, precio, animal, raza, fecha_nacimiento, vacuna } = e.target;
+        const nuevoAnuncio = new Anuncio_Mascota(
+          null,
+          titulo.value,
+          descripcion.value,
+          precio.value,
+          animal.value,
+          raza.value,
+          fecha_nacimiento.value,
+          vacuna.value);
+          // si el anuncio se creo correctamentente, se lo paso a la funcion que crea el anuncio
+          // y actualizo la tabla que se encuentra debajo con todos los anuncios
+        if (nuevoAnuncio) {
+          createAnuncio(nuevoAnuncio);
+          actualizarTabla();
+        }
+      // Si el formulario esta para modificar, con el id del anuncio seleccionado, le paso los datos
+      // a la funcion modificarAnuncio() que actualiza el objeto anuncio y despues a la funcion 
+      // updateAnuncio() le paso el anuncio actualizado y ésta hace una peticion fetch(PUT) 
+      // para actualizar la db, finalmente actualizo la tabla de anuncios
+      } else if ($formulario.btnCargar.value == "Modificar") {
+        console.log("Modificar");
+        console.log(idSeleccionado);
+        const anuncio = anuncios.find((element) => element.id == idSeleccionado);
+        modificarAnuncio(anuncio);
+        updateAnuncio(anuncio);
+        actualizarTabla();
+      }
+    } else {
+      console.log("ERROR DE SUBMIT");
+      // cargo el mensaje de error de submit
+      $alertSubmit.textContent = "Faltan campos requeridos o hay campos invalidos";
+      $alertSubmit.classList.add("danger", "text-danger", "fw-bold");
+    }
+  });
+});
+```
+
+```Javascript
+// para traer los datos del elemento clickeado, un escuchador al click en la tabla
+let idSeleccionado;
+$divTabla.addEventListener("click", (e) => {
+  $alertSubmit.textContent = "";
+  $alertSubmit.classList.remove("danger");
+  const emisor = e.target;
+  if (emisor.matches("tbody tr td")) {
+    let id = emisor.parentElement.dataset.id;
+    const anuncio = anuncios.find((element) => element.id == id);
+    console.log(anuncio);
+    idSeleccionado = id;
+    cargarFormulario(anuncio);
+    $formulario.btnCargar.value = "Modificar";
+    $formulario.btnCargar.classList.add("btn-primary");
+    $formulario.btnCargar.classList.remove("btn-success");
+    mostrarBotonEliminar();
+    removerErrores();
+  }
+});
+```
+
+![Anuncios](https://i.imgur.com/3C70779.png)
+
+### Petición fetch para traer los datos
+
+```Javascript
+let anuncios = await getAnunciosAsync();
+actualizarTabla();
+```
+
+```Javascript
+export const getAnunciosAsync = async () => {
+  try {
+    setSpinner(divSpinner, "./img/spinner.gif");
+    const res = await fetch(URL);
+    if (!res.ok) { throw new Error(`Error: ${res.status} - ${res.statusText} `) }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(err);
+  }
+  finally {
+    clearSpinner(divSpinner);
+  }
+};
+```
+
+### Armado de la tabla con los elementos del DOM
+
+```Javascript
+function actualizarTabla() {
+  // limpio de hijos div tabla
+  while ($divTabla.hasChildNodes()) {
+    $divTabla.removeChild($divTabla.firstChild);
+  }
+  // y le meto la tabla que me crea la funcion con la data actualizada
+  $divTabla.appendChild(crearTabla(anuncios));
+}
+```
+
+```Javascript
+export function crearTabla(data) {
+    if (!Array.isArray(data)) {
+        return null;
+    }
+    const tabla = document.createElement("table");
+    tabla.setAttribute("class", "table table-hover")
+    tabla.appendChild(crearCabecera(data[0]));
+    tabla.appendChild(crearCuerpo(data));
+    return tabla;
+}
+```
+
+```Javascript
+// el row que me pasan es el primer objeto del array
+function crearCabecera(row) {
+    const cabecera = document.createElement("thead"),
+        tr = document.createElement("tr");
+    // recorro con un for in las keys del objeto, no quiero el valor, quiero las keys
+    for (const key in row) {
+        if (key === "id") {
+            // el continue salta a la siguiente iteracion, entonces cuando me encuentre con id no ejecuto
+            // el codigo de las lineas 14-17 y salteo a la siguiente iteracion
+            continue;
+        }
+        // por cada elemento del objeto, creo una th y le agrego como contenido el nombre de la key
+        const th = document.createElement("th");
+        th.classList.add("text-capitalize");
+        th.textContent = key;
+        tr.appendChild(th);
+    }
+    cabecera.appendChild(tr);
+    return cabecera;
+}
+```
+
+```Javascript
+function crearCuerpo(data) {
+    const cuerpo = document.createElement("tbody");
+    data.forEach(elemento => {
+        const fila = document.createElement("tr");
+        for (const atributo in elemento) {
+            if (atributo === "id") {
+                fila.setAttribute("data-id", elemento[atributo]);
+                // el continue salta a la siguiente iteracion, entonces cuando me encuentre con id no ejecuto
+                // el codigo de las lineas 14-17 y salteo a la siguiente iteracion
+                continue;
+            }
+            const celda = document.createElement("td");
+            if (atributo == "precio") {
+                celda.textContent = "$" + elemento[atributo];
+            } else {
+                celda.textContent = elemento[atributo];
+            }
+            fila.appendChild(celda);
+            fila.classList.add("puntero");
+        }
+        const filas = cuerpo.children;
+        for (let i = 0; i < filas.length; i++) {
+            if (!(i % 2)) {
+                filas[i].classList.add("gris");
+            }
+        }
+        cuerpo.appendChild(fila);
+    });
+    return cuerpo;
+}
+```
