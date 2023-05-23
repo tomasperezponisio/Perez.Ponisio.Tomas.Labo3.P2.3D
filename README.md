@@ -133,7 +133,7 @@ $main.appendChild($divContainer);
 $divContainer.appendChild($divCards);
 ```
 
-![Anuncios](https://i.imgur.com/OggVBaJ.png)
+![Formulario](https://i.imgur.com/OggVBaJ.png)
 
 ```Javascript
 // Dos escuchadores, al cargarse la pagina y al submit del form
@@ -214,7 +214,7 @@ $divTabla.addEventListener("click", (e) => {
 });
 ```
 
-![Anuncios](https://i.imgur.com/3C70779.png)
+![Tabla de anuncios](https://i.imgur.com/3C70779.png)
 
 ### Petición fetch para traer los datos
 
