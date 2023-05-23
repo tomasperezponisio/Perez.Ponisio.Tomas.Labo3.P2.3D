@@ -1,4 +1,4 @@
-# Tomás Pérez Ponisio - ABM Petshop
+# Tomás Pérez Ponisio - ABM Petshop (Js puro, DOM, peticiones, asincronismo)
 
 ***Link al sitio deployado: https://mitrepetshop.netlify.app***
 
