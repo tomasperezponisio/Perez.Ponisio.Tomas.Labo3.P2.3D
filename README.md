@@ -11,7 +11,7 @@
 
 ## Anuncios
 
-<img src="[https://i.imgur.com/nQBLWGM.png](https://i.imgur.com/nQBLWGM.png)" width=50% height=50%>
+![Anuncios]([https://i.imgur.com/slRaTgh.png](https://i.imgur.com/nQBLWGM.png))
 
 ### Petición AJAX (promesa) para traer los datos de los anuncios
 
