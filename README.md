@@ -11,9 +11,59 @@
 
 ## Anuncios
 
-![Anuncios]([https://i.imgur.com/slRaTgh.png](https://i.imgur.com/nQBLWGM.png))
+![Anuncios](https://i.imgur.com/nQBLWGM.png)
 
 ### Petición AJAX (promesa) para traer los datos de los anuncios
+
+```Javascript
+export const getAnuncios = () => {
+  return new Promise(function (resolve, reject) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", URL);
+    xhr.onload = function () {
+      if (this.status >= 200 && this.status < 300) {
+        resolve(xhr.response);
+      } else {
+        reject({
+          status: this.status,
+          statusText: xhr.statusText
+        });
+      }
+    };
+    xhr.onerror = function () {
+      reject({
+        status: this.status,
+        statusText: xhr.statusText
+      });
+    };
+    xhr.send();
+  });
+};
+```
+
+```Javascript
+const promesa = getAnuncios();
+
+setSpinner(divSpinner, "./img/spinner.gif");
+promesa.then((data) => {
+    anuncios = JSON.parse(data);
+    anuncios.forEach((elemento) => {
+        const $nuevaTarjeta = crearTarjeta(
+            elemento.titulo,
+            elemento.descripcion,
+            elemento.animal,
+            elemento.precio,
+            elemento.raza,
+            elemento.fecha_nacimiento,
+            elemento.vacuna);
+        $divCards.append($nuevaTarjeta);
+    });
+    clearSpinner(divSpinner);
+})
+    .catch((err) => {
+        console.error(err);
+    });
+```
 
 ![Ajax](https://i.imgur.com/slRaTgh.png)
 ![Ajax](https://i.imgur.com/qSDJmcY.png)
